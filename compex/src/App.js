@@ -1,9 +1,15 @@
 import React from 'react';
-import Ex1 from './Ex1';
+
+import Counter from './Counter'
+import Todo from './Todo';
 
 function App() {
   return (
-    <Ex1></Ex1>
+    <div>
+      <Todo></Todo>
+      <Counter></Counter>
+    </div>
+
   ) 
 }
 

@@ -4,4 +4,10 @@ spring:
     username: jpa_user2
     password: jpa_user2
     driver-class-name: com.mysql.cj.jdbc.Driver
-    
+
+  jpa:
+    hiberate.ddl-auto: create
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

@@ -1,0 +1,7 @@
+spring:
+  datasource: 
+    url: jdbc:mysql://localhost:3306/jpa_ex2?useSSL=false&serverTimezone=Asia/Seoul
+    username: jpa_user2
+    password: jpa_user2
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    

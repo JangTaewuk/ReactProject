@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import Main from './pages/Main';
+import MyPage from './pages/MyPage';
+import { BrowserRouter as Router, Route, Link,Redirect } from "react-router-dom";
+import Login from './pages/Login';
+import Todo from './pages/Todo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export default class App extends Component{
+
+  constructor(){
+    super()
+    this.state = {user:null}
+  }
+
+  doLogin = (userObj) =>{
+    console.log(userObj)
+    this.setState({user:userObj})
+  }
+
+  render(){
+    return(
+      <Router>
+      <div className="APP">
+        <nav>
+          <ul>
+            <li><Link to="/">Main</Link></li>
+
+            {this.state.user != null?
+            <li><Link to="/mypage">MyPage</Link></li> 
+            : <div></div>}            
+
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/todo">todo</Link></li>
+          </ul>
+        </nav>
+        <Route path="/" exact component={Main} />
+        <Route path="/mypage" exact render={()=> 
+          this.state.user != null ? <MyPage></MyPage> 
+          : <Redirect to="/login"></Redirect>}/>
+
+        <Route path="/login" exact component={ () => <Login doLogin={this.doLogin} />}/>
+        
+        <Route path="/todo" component={Todo}/>
+      </div>
+      </Router>
+    )
+  }
 }
 
-export default App;
+

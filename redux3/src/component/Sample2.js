@@ -15,10 +15,10 @@ function Sample2(props){
     //     })
     // }
 
-    const getPage = (page) => {
-        console.log("pageNum: " + page);
-        props.dispatch(fetchPage(page))
-    }
+    // const getPage = (page) => {
+    //     console.log("pageNum: " + page);
+    //     props.dispatch(fetchPage(page))
+    // }
 
     const list = props.content.map( ({tno,title})=> {
         return <li key={tno}>{title}</li>
@@ -32,9 +32,15 @@ function Sample2(props){
             <ul>
                 {list}
             </ul>
-            <button onClick={()=>{getPage(1)}}>CLICK</button>
+            <button onClick={()=>{props.getPage(1)}}>CLICK</button>
         </div>
     )
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getPage: (page) => dispatch(fetchPage(page))
+    }
 }
 
 const mapStateToProps = (state) => {
@@ -45,4 +51,4 @@ const mapStateToProps = (state) => {
     return data
 }
 
-export default connect(mapStateToProps)(Sample2)
+export default connect(mapStateToProps,mapDispatchToProps)(Sample2)

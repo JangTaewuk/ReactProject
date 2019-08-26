@@ -2,25 +2,25 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Main from './pages/Main';
+import MyPage from './pages/MyPage';
+import Nav from './component/Nav';
+import Posts from './pages/Posts';
+import SignIn from './pages/SignIn';
+import LeftDrawer from './component/LeftDrawer';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Nav></Nav>
+      <LeftDrawer></LeftDrawer>
+      <Route path="/" exact component = {Main} ></Route>
+      <Route path="/mypage" component = {MyPage} ></Route>
+      <Route path="/posts" component = {Posts} ></Route>
+      <Route path="/signin" component = {SignIn} ></Route>
+    </Router>
+  )
 }
 
 export default App;

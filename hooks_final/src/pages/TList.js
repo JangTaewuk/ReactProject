@@ -2,8 +2,6 @@ import React,{useState,useEffect} from 'react';
 
 export default function TList(props){
 
-    console.log(props)
-
     const {history,match} = props
 
     const [page,setPage] = useState(match.params.page)

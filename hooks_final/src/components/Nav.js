@@ -8,6 +8,7 @@ export default function Nav(props){
             <Link to="/">Main</Link>
             <Link to="/list/1">List</Link>
             <Link to="/register">Register</Link>
+            <Link to="/login">login</Link>
         </div>
     )
 }
